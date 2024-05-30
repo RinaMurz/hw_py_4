@@ -1,4 +1,4 @@
-from selene import browser, have, be
+from selene import browser, have
 import os
 
 
@@ -40,7 +40,7 @@ def test_complete_todo():
         '0123456789',
         '06 April,1978',
         'Maths',
-        'Sports,Music',
+        'Sports, Music',
         'pict.png',
         'Moscow',
         'Haryana Karnal'
