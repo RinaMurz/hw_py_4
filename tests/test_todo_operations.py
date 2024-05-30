@@ -5,9 +5,8 @@ import os
 def test_complete_todo():
     browser.open('/automation-practice-form')
 
-    browser.element('#firstName').type('Ivanov')
-    browser.element('#lastName').type('Ivan')
-    #browser.all('[id= "userName-wrapper>div"]').should(have.size(2))
+    browser.element('#firstName').type('Ivan')
+    browser.element('#lastName').type('Ivanov')
 
     browser.element('#userEmail').type('ivanovivan78@gmail.com')
 
@@ -25,12 +24,24 @@ def test_complete_todo():
     browser.element('[for="hobbies-checkbox-1"]').click()
     browser.element('[for="hobbies-checkbox-3"]').click()
 
-    browser.element('element').send_keys(os.path.abspath('hw_py_4_picture.png'))
+    browser.element('#uploadPicture').send_keys(os.path.abspath('../pict.png'))
 
     browser.element('#currentAddress').type('Moscow')
 
-    browser.element('#state').click().element('#react-select-3-option_1').click()
-    browser.element('#city').click().element('#react-select-4-option_1').click()
+    browser.element('#state').click().element('#react-select-3-option-2').click()
+    browser.element('#city').click().element('#react-select-4-option-0').click()
 
+    browser.element('#submit').click()
 
-
+    browser.element(".modal-content").element("tbody").all("tr").all("td").even.should(have.exact_texts((
+        'Ivan Ivanov',
+        'ivanovivan78@gmail.com',
+        'Male',
+        '0123456789',
+        '06 April,1978',
+        'Maths',
+        'Sports, Music',
+        'pict.png',
+        'Moscow',
+        'Haryana Karnal'
+    )))
