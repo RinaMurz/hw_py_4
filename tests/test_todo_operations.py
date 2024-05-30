@@ -45,3 +45,4 @@ def test_complete_todo():
         'Moscow',
         'Haryana Karnal'
     )))
+
